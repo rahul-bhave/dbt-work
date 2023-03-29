@@ -58,8 +58,3 @@ class TestExample:
         assert len(results) == 25
         
 
-    @pytest.mark.xfail
-    def test_build(self, project):
-        """Expect a failing test"""
-        # do it all
-        results = run_dbt(["build"])
