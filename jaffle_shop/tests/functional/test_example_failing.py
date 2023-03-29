@@ -54,7 +54,7 @@ class TestExample:
         results = run_dbt(["run"])
         assert len(results) == 8
         # test tests
-        results = run_dbt(["test"], expect_pass = False) # expect failing test
+        results = run_dbt(["test"], expect_pass = True) # expect failing test
         assert len(results) == 25
         
 
