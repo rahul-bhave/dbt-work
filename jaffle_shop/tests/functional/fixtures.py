@@ -99,12 +99,5 @@ models:
         tests:
           - not_null
 
-  - name: my_model
-        columns:
-          - name: id
-            tests:
-              - unique
-              
-
 """
 
