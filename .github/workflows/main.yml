@@ -2,9 +2,9 @@ name: ci-test
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
 
@@ -28,3 +28,27 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
+    steps:
+
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        cd jaffle_shop/
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install dbt-postgres
+        pip install dbt-core
+        pip install pytest
+        dbt debug
+        dbt seed
+        dbt run
+        dbt test
+
+    - name: Run tests
+      run: |
+         python -m pytest tests/functional/test_example_failing.py -sv
