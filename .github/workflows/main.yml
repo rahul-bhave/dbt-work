@@ -55,4 +55,5 @@ jobs:
 
     - name: Run tests
       run: |
+         cd jaffle_shop/
          python -m pytest tests/functional/test_example_failing.py -sv
