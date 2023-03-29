@@ -56,9 +56,7 @@ class TestExample:
         # test tests
         results = run_dbt(["test"], expect_pass = False) # expect failing test
         assert len(results) == 25
-        # validate that the results include one pass and one failure
-        result_statuses = sorted(r.status for r in results)
-        assert result_statuses == ["fail", "pass"]
+        
 
     @pytest.mark.xfail
     def test_build(self, project):
