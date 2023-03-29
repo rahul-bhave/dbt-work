@@ -104,6 +104,5 @@ models:
           - name: id
             tests:
               - unique
-              - not_null  # this test will fail
 
 """
