@@ -44,8 +44,7 @@ class TestExample:
     # continues below
     def test_run_seed_test(self):
         """
-        Seed, then run, then test. We expect one of the tests to fail
-        An alternative pattern is to use pytest "xfail" (see below)
+        test to check the assertion results
         """
         # seed seeds
         results = run_dbt(["seed"])
@@ -54,7 +53,7 @@ class TestExample:
         results = run_dbt(["run"])
         assert len(results) == 8
         # test tests
-        results = run_dbt(["test"], expect_pass = True) # expect failing test
+        results = run_dbt(["test"], expect_pass = True)
         assert len(results) == 25
         
 
